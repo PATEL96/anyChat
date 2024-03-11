@@ -1,9 +1,11 @@
-import CredentialsProvider from "next-auth/providers/credentials";
+import Credentials from "next-auth/providers/credentials";
+import Google from "next-auth/providers/google";
+import Github from "next-auth/providers/github";
 import type { NextAuthOptions } from "next-auth";
 
 export const auhOptions: NextAuthOptions = {
 	providers: [
-		CredentialsProvider({
+		Credentials({
 			name: "AnyChat",
 			credentials: {
 				userName: {
@@ -27,5 +29,13 @@ export const auhOptions: NextAuthOptions = {
 				}
 			},
 		}),
+		Google({
+			clientId: process.env.GOOGLE_ID as string,
+			clientSecret: process.env.GOOGLE_SECRET as string,
+		}),
+		Github({
+			clientId: process.env.GITHUB_ID as string,
+			clientSecret: process.env.GITUB_SECRET as string
+		})
 	],
 }
