@@ -1,7 +1,11 @@
 .TimeLine{
 	position: absolute;
-	top: 5svh;
-	height: fit-content;
+	top: 0svh;
 	width: 400px;
-	transform: translateX(-50%) translateY(-50%);
+	height: 90svh;
+	transform: translateX(-50%);
+}
+
+.Element{
+	height: 85svh;
 }

@@ -2,8 +2,12 @@
 	position: fixed;
 	transform: translateX(-50%) translateY(-50%);
 	width: 350px;
+	height: 60px;
 	top: 90svh;
 	display: flex;
+	background-color: #1c1c1c98;
+	backdrop-filter: blur(10px);
+	border-radius: 8px;
 	align-items: center;
 	justify-content: space-evenly;
 }
