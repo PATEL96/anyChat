@@ -11,6 +11,7 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from "@/components/ui/dialog"
+import { Separator } from "@/components/ui/separator"
 
 
 export function TimeLine() {
@@ -23,7 +24,7 @@ export function TimeLine() {
 						<div className="Element m-5" key={element.id}>
 							<p>{element.Data}</p>
 						</div>
-						<hr></hr>
+						<Separator />
 					</>
 				))}
 			</div>
