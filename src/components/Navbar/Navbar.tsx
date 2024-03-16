@@ -2,7 +2,7 @@
 
 import './Navbar.css';
 import { useState } from "react"
-import { MinusIcon, PlusIcon, Cross2Icon, PersonIcon } from "@radix-ui/react-icons"
+import { PlusIcon, Cross2Icon, PersonIcon } from "@radix-ui/react-icons"
 import { Button } from "@/components/ui/button"
 import {
 	Drawer,
@@ -19,13 +19,11 @@ import {
 	Dialog,
 	DialogContent,
 	DialogDescription,
-	DialogFooter,
 	DialogHeader,
 	DialogTitle,
 	DialogTrigger,
 } from "@/components/ui/dialog"
 import { AddComment } from '../AddComment/AddComment';
-import { DialogClose } from '@radix-ui/react-dialog';
 
 
 export default function Navbar() {
