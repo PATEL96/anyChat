@@ -2,10 +2,16 @@
 	position: absolute;
 	top: 0svh;
 	width: 400px;
-	height: 90svh;
+	height: 80vh;
+	overflow: visible;
 	transform: translateX(-50%);
 }
 
 .Element{
-	height: 85svh;
+	min-height: 20svh;
+	font-size: 22px;
+	font-weight: 600;
+	padding: 2rem;
+	border-radius: 5px;
+	overflow-wrap: break-word;
 }

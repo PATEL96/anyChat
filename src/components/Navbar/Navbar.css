@@ -2,11 +2,11 @@
 	position: fixed;
 	transform: translateX(-50%) translateY(-50%);
 	width: 350px;
-	height: 60px;
-	top: 90svh;
+	height: 65px;
+	bottom: 0;
 	display: flex;
-	background-color: #1c1c1c98;
-	backdrop-filter: blur(10px);
+	background-color: #1c1c1c55;
+	backdrop-filter: blur(5px);
 	border-radius: 8px;
 	align-items: center;
 	justify-content: space-evenly;
