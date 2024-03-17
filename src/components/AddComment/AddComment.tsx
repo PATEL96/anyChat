@@ -15,9 +15,9 @@ import {
 	FormMessage,
 } from "@/components/ui/form"
 import { Textarea } from "@/components/ui/textarea"
-import { useRouter } from "next/navigation"
 import { DialogClose } from "@radix-ui/react-dialog"
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 
 const FormSchema = z.object({
 	comment: z
@@ -25,12 +25,14 @@ const FormSchema = z.object({
 		.min(10, {
 			message: "Bio must be at least 10 characters.",
 		})
-		.max(160, {
+		.max(256, {
 			message: "Bio must not be longer than 30 characters.",
 		}),
 })
 
 export function AddComment() {
+
+	const router = useRouter();
 
 	const [submitted, setSubmitted] = useState(false);
 
@@ -38,9 +40,27 @@ export function AddComment() {
 		resolver: zodResolver(FormSchema),
 	})
 
-	function onSubmit(data: z.infer<typeof FormSchema>) {
-		console.log(JSON.stringify(data, null, 2))
-		setSubmitted(true);
+	async function onSubmit(comment: z.infer<typeof FormSchema>) {
+		console.log(JSON.stringify(comment, null, 2))
+
+		try {
+			const res = await fetch('http://192.168.0.102:3000/api/comments', {
+				method: "POST",
+				headers: {
+					"Content-type": "application/json"
+				},
+				body: JSON.stringify(comment, null, 2)
+			})
+
+			if (res.ok) {
+				setSubmitted(true);
+			} else {
+				throw new Error("Failed to Create")
+			}
+
+		} catch (error) {
+			console.log(error)
+		}
 	}
 
 	return (
@@ -66,11 +86,11 @@ export function AddComment() {
 				{
 					submitted ?
 						<DialogClose asChild>
-							<Button className="w-full" variant="outline">Close</Button>
+							<Button className="w-full" variant="outline" onClick={() => {router.refresh()}}>Close</Button>
 						</DialogClose>
-						: 
+						:
 						<Button type="submit" className="w-full">Post</Button>
-		}
+				}
 			</form>
 		</Form>
 	)

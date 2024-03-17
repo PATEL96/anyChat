@@ -28,6 +28,7 @@ import { AddComment } from '../AddComment/AddComment';
 
 export default function Navbar() {
 
+
 	const [goal, setGoal] = useState(350)
 	const { data: session } = useSession();
 
@@ -97,11 +98,19 @@ export default function Navbar() {
 								</div>
 							</div>
 							<DrawerFooter>
-								<Link href="/api/auth/signout">
-									<Button variant="destructive" className='w-full'>
-										Log Out
-									</Button>
-								</Link>
+								{session ? <>
+									<Link href="/api/auth/signout">
+										<Button variant="destructive" className='w-full'>
+											Log Out
+										</Button>
+									</Link>
+								</> : <>
+									<Link href="/api/auth/signin">
+											<Button variant="default" className='w-full'>
+											Log In
+										</Button>
+									</Link>
+								</>}
 							</DrawerFooter>
 						</div>
 					</DrawerContent>
