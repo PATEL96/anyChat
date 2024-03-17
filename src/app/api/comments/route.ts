@@ -14,7 +14,7 @@ export async function POST(request: Request, response: NextApiResponse) {
     return new NextResponse(JSON.stringify(newComment), { status: 200 });
 }
 
-export async function GET(request: NextApiRequest, response: NextApiResponse) {
+export async function GET(request: Request, response: NextApiResponse) {
     try {
         await connectMongoDB();
 
