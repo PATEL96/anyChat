@@ -27,12 +27,12 @@ export async function TimeLine() {
 		<div className="flex items-center">
 			<div className="TimeLine">
 				{comments.reverse().map((element: any) => (
-					<div>
+					<>
 						<div className="Element m-5" key={element.id}>
 							<p>{element.comment}</p>
 						</div>
 						<Separator />
-					</div>
+					</>
 				))}
 			</div>
 			<Navbar />
