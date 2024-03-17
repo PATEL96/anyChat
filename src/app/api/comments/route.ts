@@ -1,6 +1,6 @@
 import connectMongoDB from "@/lib/mongo";
 import Comment from "@/models/Comment";
-import { NextApiRequest, NextApiResponse } from "next";
+import { NextApiResponse } from "next";
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request, response: NextApiResponse) {

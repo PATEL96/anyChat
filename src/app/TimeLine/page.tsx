@@ -28,8 +28,8 @@ export async function TimeLine() {
 			<div className="TimeLine">
 				{comments.reverse().map((element: any) => (
 					<>
-						<div className="Element m-5" key={element.id}>
-							<p>{element.comment}</p>
+						<div className="Element m-5" key={element._id}>
+							<p key={element._id}>{element.comment}</p>
 						</div>
 						<Separator />
 					</>

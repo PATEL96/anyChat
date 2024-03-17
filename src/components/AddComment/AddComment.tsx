@@ -22,7 +22,7 @@ import { useRouter } from "next/navigation"
 const FormSchema = z.object({
 	comment: z
 		.string()
-		.min(10, {
+		.min(1, {
 			message: "Bio must be at least 10 characters.",
 		})
 		.max(256, {
