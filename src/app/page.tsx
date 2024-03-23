@@ -1,4 +1,4 @@
-import { TimeLine } from "./TimeLine/page"
+import { TimeLine } from "../components/TimeLine/TimeLine"
 
 export default function Home() {
   return (
