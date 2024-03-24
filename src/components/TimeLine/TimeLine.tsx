@@ -4,7 +4,7 @@ import { Separator } from "@/components/ui/separator"
 
 async function getComments() {
 	try {
-		const res = await fetch('http://192.168.0.102:3000/api/comments', {
+		const res = await fetch('http://192.168.0.103:3000/api/comments', {
 			cache: 'no-store',
 		})
 
@@ -26,13 +26,13 @@ export async function TimeLine() {
 	return (
 		<div className="flex items-center">
 			<div className="TimeLine">
-				{comments.reverse().map((element: any) => (
-					<>
+				{comments.map((element: any) => (
+					<div key={element._id}>
 						<div className="Element m-5" key={element._id}>
 							<p key={element._id}>{element.comment}</p>
 						</div>
 						<Separator />
-					</>
+					</div>
 				))}
 			</div>
 			<Navbar />

@@ -44,7 +44,7 @@ export function AddComment() {
 		console.log(JSON.stringify(comment, null, 2))
 
 		try {
-			const res = await fetch('http://192.168.0.102:3000/api/comments', {
+			const res = await fetch('http://192.168.0.103:3000/api/comments', {
 				method: "POST",
 				headers: {
 					"Content-type": "application/json"

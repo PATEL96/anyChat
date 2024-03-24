@@ -20,6 +20,8 @@ export async function GET(request: Request, response: NextApiResponse) {
 
         const comments = await Comment.find();
 
+        comments.reverse();
+
         return new NextResponse(JSON.stringify(comments), { status: 200 });
     } catch (error) {
         console.error("Error fetching comments:", error);
