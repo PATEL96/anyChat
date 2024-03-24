@@ -21,7 +21,7 @@ async function getComments() {
 
 export async function TimeLine() {
 
-	const comments = await getComments();
+	const comments = await getComments() || [{comment: "Loading"}];
 
 	return (
 		<div className="flex items-center">
