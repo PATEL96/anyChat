@@ -4,7 +4,7 @@ import { Separator } from "@/components/ui/separator"
 
 async function getComments() {
 	try {
-		const res = await fetch('https://urchin-app-c7kny.ondigitalocean.app:3000/api/comments', {
+		const res = await fetch('http://localhost:3000/api/comments', {
 			cache: 'no-store',
 		})
 
