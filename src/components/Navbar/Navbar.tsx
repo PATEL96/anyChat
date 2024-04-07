@@ -24,6 +24,7 @@ import {
 	DialogTrigger,
 } from "@/components/ui/dialog"
 import { AddComment } from '../AddComment/AddComment';
+import Image from 'next/image';
 
 
 export default function Navbar() {
@@ -48,7 +49,7 @@ export default function Navbar() {
 					<DrawerContent>
 						<div className="mx-auto w-full max-w-sm">
 							<DrawerHeader className='flex items-center justify-between'>
-								<DrawerTitle>Move Goal</DrawerTitle>
+								<DrawerTitle>{"What's on your Mind?"}</DrawerTitle>
 								<DrawerClose asChild>
 									<Button variant="outline" size="icon" className=' h-8 w-8 shrink-0 rounded-full'>
 										<Cross2Icon className='h-4 w-4' />
@@ -57,14 +58,31 @@ export default function Navbar() {
 							</DrawerHeader>
 							<Dialog>
 								<DialogTrigger>Add Comment</DialogTrigger>
-								<DialogContent>
-									<DialogHeader>
-										<DialogTitle>Add a new Comment here...</DialogTitle>
-										<DialogDescription>
-											<AddComment />
-										</DialogDescription>
-									</DialogHeader>
-								</DialogContent>
+								{
+									session ? <>
+										<DialogContent>
+											<DialogHeader>
+												<DialogTitle>Add a new Comment here...</DialogTitle>
+												<DialogDescription>
+													<AddComment />
+												</DialogDescription>
+											</DialogHeader>
+										</DialogContent>
+									</> : <>
+										<DialogContent>
+											<DialogHeader>
+												<DialogTitle>Looks like You are not Logged In</DialogTitle>
+												<DialogDescription className='p-5 align-middle items-center w-full justify-center flex'>
+													<Link href="/api/auth/signin">
+														<Button variant="default" className='w-30'>
+															Log In to Continue
+														</Button>
+													</Link>
+												</DialogDescription>
+											</DialogHeader>
+										</DialogContent>
+									</>
+								}
 							</Dialog>
 							<DrawerFooter>
 								<DrawerClose asChild>
@@ -93,7 +111,20 @@ export default function Navbar() {
 								</DrawerClose>
 							</DrawerHeader>
 							<div className="p-4 pb-0">
-								<div className="mt-3 h-[120px]">
+								<div>
+									{
+										session ?
+											<>
+
+												<Image src={session?.user?.image} alt='User' height={100} width={100} className=' rounded-xl' />
+											</>
+											:
+											<>
+												Login to Continue
+											</>
+									}
+								</div>
+								<div className="mt-3 h-[120px] text-4xl font-extrabold">
 									{session?.user?.name}
 								</div>
 							</div>
@@ -106,7 +137,7 @@ export default function Navbar() {
 									</Link>
 								</> : <>
 									<Link href="/api/auth/signin">
-											<Button variant="default" className='w-full'>
+										<Button variant="default" className='w-full'>
 											Log In
 										</Button>
 									</Link>

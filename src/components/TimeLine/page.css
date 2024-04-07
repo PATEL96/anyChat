@@ -8,7 +8,7 @@
 }
 
 .Element{
-	min-height: 20svh;
+	max-height: 20svh;
 	font-size: 22px;
 	font-weight: 600;
 	padding: 2rem;
