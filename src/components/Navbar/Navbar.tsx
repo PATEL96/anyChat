@@ -96,9 +96,18 @@ export default function Navbar() {
 			<div>
 				<Drawer>
 					<DrawerTrigger asChild>
-						<Button variant='default' className='rounded-full h-12 w-12'>
-							<PersonIcon className='h-10 w-10' />
-						</Button>
+						{
+							session ?
+
+								<Button variant='default' className='rounded-full h-12 w-12'>
+									<PersonIcon className='h-10 w-10' />
+								</Button>
+								:
+								<Button variant="destructive" className='rounded-full h-12 w-12'>
+									<PersonIcon className='h-10 w-10' />
+								</Button>
+
+						}
 					</DrawerTrigger>
 					<DrawerContent>
 						<div className="mx-auto w-full max-w-sm">
@@ -116,7 +125,7 @@ export default function Navbar() {
 										session ?
 											<>
 
-												<Image src={session?.user?.image} alt='User' height={100} width={100} className=' rounded-xl' />
+												<Image src={session?.user?.image} alt='User' height={80} width={80} className=' rounded-xl' />
 											</>
 											:
 											<>
@@ -124,8 +133,8 @@ export default function Navbar() {
 											</>
 									}
 								</div>
-								<div className="mt-3 h-[120px] text-4xl font-extrabold">
-									{session?.user?.name}
+								<div className="mt-3 h-[120px] text-2xl font-extrabold">
+									{`Welcome ${session?.user?.name}`}
 								</div>
 							</div>
 							<DrawerFooter>
