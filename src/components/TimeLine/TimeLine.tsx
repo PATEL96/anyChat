@@ -125,7 +125,7 @@ export function TimeLine() {
 			<div className="flex items-center">
 				<div className="TimeLine">
 					{comments.map((element) => (
-						<div key={element._id} onDoubleClick={() => handleLikeDislike(element._id, 'like', setComments, name)}>
+						<div key={element._id}>
 							<div className="Element m-5" key={element._id}>
 								<div>
 									<p key={element._id}>{element.comment}</p>
