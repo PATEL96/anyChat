@@ -8,9 +8,7 @@ import { ArrowUpIcon, ArrowDownIcon } from "@radix-ui/react-icons";
 
 async function getComments() {
 	try {
-		// const res = await fetch('http://192.168.0.103:3000/api/comments', {
-			// const res = await fetch('http://192.168.0.102:3000/api/comments', {
-			const res = await fetch('http://localhost:3000/api/comments', {
+			const res = await fetch('/api/comments', {
 			cache: 'no-store',
 		});
 
@@ -38,9 +36,7 @@ function convertTimestampToSimpleDate(timestamp: string): string {
 
 async function handleLikeDislike(commentId: string, action: string, setComments) {
 	try {
-		// const res = await fetch('http://192.168.0.103:3000/api/comments', {
-			// const res = await fetch('http://192.168.0.102:3000/api/comments', {
-			const res = await fetch('http://localhost:3000/api/comments', {
+			const res = await fetch('/api/comments', {
 			method: "PUT",
 			headers: {
 				"Content-Type": "application/json"

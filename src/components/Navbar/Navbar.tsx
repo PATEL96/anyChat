@@ -124,17 +124,16 @@ export default function Navbar() {
 									{
 										session ?
 											<>
-
 												<Image src={session?.user?.image} alt='User' height={80} width={80} className=' rounded-xl' />
+												<div className="mt-3 h-[120px] text-2xl font-extrabold">
+													{`Welcome ${session?.user?.name}`}
+												</div>
 											</>
 											:
-											<>
+											<div className="mt-3 h-[120px] text-2xl font-extrabold">
 												Login to Continue
-											</>
+											</div>
 									}
-								</div>
-								<div className="mt-3 h-[120px] text-2xl font-extrabold">
-									{`Welcome ${session?.user?.name}`}
 								</div>
 							</div>
 							<DrawerFooter>
