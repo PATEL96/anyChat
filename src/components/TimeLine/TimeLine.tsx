@@ -8,7 +8,7 @@ import { ArrowUpIcon, ArrowDownIcon } from "@radix-ui/react-icons";
 
 async function getComments() {
 	try {
-			const res = await fetch('/api/comments', {
+		const res = await fetch('/api/comments', {
 			cache: 'no-store',
 		});
 
@@ -36,7 +36,7 @@ function convertTimestampToSimpleDate(timestamp: string): string {
 
 async function handleLikeDislike(commentId: string, action: string, setComments) {
 	try {
-			const res = await fetch('/api/comments', {
+		const res = await fetch('/api/comments', {
 			method: "PUT",
 			headers: {
 				"Content-Type": "application/json"
@@ -65,7 +65,15 @@ export function TimeLine() {
 			const data = await getComments();
 			setComments(data || [{ comment: "Loading" }]);
 		};
+
+		// Initial fetch
 		fetchComments();
+
+		// Set interval to fetch every 10 minutes
+		const intervalId = setInterval(fetchComments, 5 * 60 * 1000);
+
+		// Cleanup function to clear interval when component unmounts or useEffect reruns
+		return () => clearInterval(intervalId);
 	}, []);
 
 	return (
