@@ -1,7 +1,7 @@
 import connectMongoDB from "@/lib/mongo";
 import Comment from "@/models/Comment";
-import { NextApiResponse } from "next";
-import { NextResponse } from "next/server";
+import { NextApiRequest, NextApiResponse } from "next";
+import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: Request, response: NextApiResponse) {
     if (request.method !== 'POST') {
@@ -18,7 +18,11 @@ export async function GET(request: Request, response: NextApiResponse) {
     try {
         await connectMongoDB();
 
-        const comments = await Comment.find();
+        const userName = await request.headers.get('userName'); // Assuming userName is passed as a query parameter
+
+        let comments;
+
+        comments = await Comment.find({ hiddenFor: { $ne: userName } }); // Fetch comments not hidden for the user
 
         comments.reverse();
 
@@ -29,10 +33,11 @@ export async function GET(request: Request, response: NextApiResponse) {
     }
 }
 
+
 // New route for updating like count
 export async function PUT(request: Request, response: NextApiResponse) {
     try {
-        const { action, commentId } = await request.json();
+        const { action, commentId, userName } = await request.json();
 
         await connectMongoDB();
 
@@ -47,7 +52,7 @@ export async function PUT(request: Request, response: NextApiResponse) {
         } else if (action === 'dislike') {
             comment.dislikes += 1;
         } else if (action === 'hide') {
-            comment.hidden = true;
+            comment.hiddenFor.push(userName);
         } else {
             return new NextResponse(JSON.stringify({ message: "Invalid action" }), { status: 400 });
         }
