@@ -66,13 +66,12 @@ export function TimeLine() {
 	const [comments, setComments] = useState([]);
 	const [name, setName] = useState("")
 	const { data: session } = useSession();
-	const userName = session?.user?.name;
 	useEffect(() => {
 		if (session) {
 			setName(session?.user?.name)
 		}
 		const fetchComments = async () => {
-			const data = await getComments(userName);
+			const data = await getComments(name);
 			setComments(data || [{ comment: "Loading" }]);
 		};
 
