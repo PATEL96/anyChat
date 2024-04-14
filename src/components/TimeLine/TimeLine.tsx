@@ -70,7 +70,7 @@ export function TimeLine() {
 		fetchComments();
 
 		// Set interval to fetch every 10 minutes
-		const intervalId = setInterval(fetchComments, 5 * 60 * 1000);
+		const intervalId = setInterval(fetchComments, 1000);
 
 		// Cleanup function to clear interval when component unmounts or useEffect reruns
 		return () => clearInterval(intervalId);
