@@ -83,7 +83,7 @@ export function TimeLine() {
 
 		// Cleanup function to clear interval when component unmounts or useEffect reruns
 		return () => clearInterval(intervalId);
-	}, [session]);
+	}, [session, name]);
 
 	if (session) {
 
