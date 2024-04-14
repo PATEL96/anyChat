@@ -66,12 +66,13 @@ export function TimeLine() {
 	const [comments, setComments] = useState([]);
 	const [name, setName] = useState("")
 	const { data: session } = useSession();
+	const userName = session?.user?.name;
 	useEffect(() => {
 		if (session) {
 			setName(session?.user?.name)
 		}
 		const fetchComments = async () => {
-			const data = await getComments(name);
+			const data = await getComments(userName);
 			setComments(data || [{ comment: "Loading" }]);
 		};
 
@@ -83,7 +84,7 @@ export function TimeLine() {
 
 		// Cleanup function to clear interval when component unmounts or useEffect reruns
 		return () => clearInterval(intervalId);
-	}, [session, name]);
+	}, [session]);
 
 	if (session) {
 
